@@ -4,21 +4,16 @@ import "./App.css";
 import "./Common/Common.css";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      subscribersListToShow: []
+    }
+  }
   render() {
-    let subscribers = [
-      {
-        id: 1,
-        name: 'Pradeep',
-        phone: '0123456789'
-      },
-      {
-        id: 2,
-        name: 'Hari',
-        phone: '9876543210'
-      }
-    ]
+
     return (
-      <div className="parent-container">
+      <div>
         <Header heading='Phone Directory'/>
         <div className="component-body-container">
           <button className="custom-btn add-btn">Add</button>
@@ -28,7 +23,7 @@ class App extends Component {
             <span className="grid-item phone-heading">Phone</span>
           </div>
           {
-            subscribers.map(sub => {
+            this.state.subscribersListToShow.map(sub => {
               return <div key={sub.id} className="grid-container">
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>

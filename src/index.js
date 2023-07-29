@@ -8,7 +8,7 @@ import AddSubsciber from "./AddSbuscriber";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AddSubsciber />
+    <App />
   </React.StrictMode>
 );
 

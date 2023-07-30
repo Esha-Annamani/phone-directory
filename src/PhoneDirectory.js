@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddSubscriber from './AddSubscriber';
 import ShowSubscribers from './ShowSubscribers';
-import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, } from 'react-router-dom';
 
 class PhoneDirectory extends Component {
 
@@ -49,17 +49,43 @@ class PhoneDirectory extends Component {
 
     render() {
         return (
-            <Router>          
-                <div>
-                    <Routes>
-                        <Route exact path="/" render={(props) => (<ShowSubscribers {...props} subscribersList={this.state.subscribersList} deleteSubscriberHandler={this.deleteSubscriberHandler} />)} />
-                        <Route exact path="/add" render={({history}, props) => (<AddSubscriber history={history} {...props} addSubscriberHandler={this.addSubscriberHandler} />)} />
-                        {/* <Route exact path="/add" render={(props) => (<AddSubscriber {...props} addSubscriberHandler={this.addSubscriberHandler} />)} /> */}
-
+            <Router>
+            <div>
+                {/* Navigation links */}
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Show Subscribers</Link>
+                        </li>
+                        <li>
+                            <Link to="/add">Add Subscriber</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Routes>
+                <Route
+                        path="/"
+                        element={<ShowSubscribers subscribersList={this.state.subscribersList} deleteSubscriberHandler={this.deleteSubscriberHandler} />}
+                    />
+                    <Route
+                        path="/add"
+                        element={<AddSubscriber addSubscriberHandler={this.addSubscriberHandler} history={this.props.history}/>}
+                    />
                     </Routes>
                 </div>
-                
             </Router>
+            
+            // <Router>          
+                // <div>
+                //     <Routes>
+                //         <Route exact path="/" render={(props) => (<ShowSubscribers {...props} subscribersList={this.state.subscribersList} deleteSubscriberHandler={this.deleteSubscriberHandler} />)} />
+                //         <Route exact path="/add" render={({history}, props) => (<AddSubscriber history={history} {...props} addSubscriberHandler={this.addSubscriberHandler} />)} />
+                //         {/* <Route exact path="/add" render={(props) => (<AddSubscriber {...props} addSubscriberHandler={this.addSubscriberHandler} />)} /> */}
+
+            //         </Routes>
+            //     </div>
+                
+            // </Router> */}
         )
     }
 }

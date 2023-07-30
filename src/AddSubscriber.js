@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 class AddSusbscriber extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             id: 0,
             name: '',
